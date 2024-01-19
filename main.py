@@ -89,7 +89,7 @@ async def info(ctx, *, item_id1: str):
         else:
             item_id = item_id1
         if item_id:
-            details_url = f"https://economy.roproxy.com/v2/assets/{item_id}/details"
+            details_url = f"https://economy.roblox.com/v2/assets/{item_id}/details"
             details_response = requests.get(details_url)
 
             if details_response.status_code == 200:
@@ -136,7 +136,7 @@ async def info(ctx, *, item_id1: str):
                         sale_location = details_data.get("SaleLocation", {})
                         universe_ids = sale_location.get("UniverseIds", [])
                         for game_id in universe_ids:
-                            gameuniverse_url = f"https://games.roproxy.com/v1/games?universeIds={game_id}"
+                            gameuniverse_url = f"https://games.roblox.com/v1/games?universeIds={game_id}"
                             gameuniverse_response = requests.get(gameuniverse_url)
                             if gameuniverse_response.status_code == 200:
                                 game_data = gameuniverse_response.json()
@@ -198,7 +198,7 @@ async def stock(ctx, *, item_id1: str):
         else:
             item_id = item_id1
         if item_id:
-            details_url = f"https://economy.roproxy.com/v2/assets/{item_id}/details"
+            details_url = f"https://economy.roblox.com/v2/assets/{item_id}/details"
             details_response = requests.get(details_url)
 
             if details_response.status_code == 200:
@@ -252,7 +252,7 @@ async def item2universe(ctx, item_id1: str):
             item_id = item_id1.split("/catalog/")[1].split("/")[0]
         else:
             item_id = item_id1
-        url = f"https://economy.roproxy.com/v2/assets/{item_id}/details"
+        url = f"https://economy.roblox.com/v2/assets/{item_id}/details"
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
@@ -289,7 +289,7 @@ async def item2game(ctx, item_id1: str):
             item_id = item_id1.split("/catalog/")[1].split("/")[0]
         else:
             item_id = item_id1
-        response = requests.get(f'https://economy.roproxy.com/v2/assets/{item_id}/details')
+        response = requests.get(f'https://economy.roblox.com/v2/assets/{item_id}/details')
         if response.status_code == 200:
             data = response.json()
             sale_location = data.get('SaleLocation', {})
@@ -298,7 +298,7 @@ async def item2game(ctx, item_id1: str):
                 root_place_ids = []  
                 root_place_names = []  
                 for universe_id in universe_ids:
-                    game_response = requests.get(f'https://games.roproxy.com/v1/games?universeIds={universe_id}')
+                    game_response = requests.get(f'https://games.roblox.com/v1/games?universeIds={universe_id}')
         
                     if game_response.status_code == 200:
                         game_data = game_response.json()
@@ -338,7 +338,7 @@ async def item2places(ctx, item_id1: str):
             item_id = item_id1.split("/catalog/")[1].split("/")[0]
         else:
             item_id = item_id1
-        response = requests.get(f'https://economy.roproxy.com/v2/assets/{item_id}/details')
+        response = requests.get(f'https://economy.roblox.com/v2/assets/{item_id}/details')
 
         if response.status_code == 200:
             data = response.json()
@@ -349,7 +349,7 @@ async def item2places(ctx, item_id1: str):
                 place_names = []  
 
                 for universe_id in universe_ids:
-                    game_response = requests.get(f'https://develop.roproxy.com/v1/universes/{universe_id}/places?isUniverseCreation=false&limit=100&sortOrder=Asc')
+                    game_response = requests.get(f'https://develop.roblox.com/v1/universes/{universe_id}/places?isUniverseCreation=false&limit=100&sortOrder=Asc')
 
                     if game_response.status_code == 200:
                         game_data = game_response.json()
@@ -391,7 +391,7 @@ async def game2places(ctx, game_id1: str):
             game_id = game_id1.split("/games/")[1].split("/")[0]
         else:
             game_id = game_id1
-        response = requests.get(f'https://apis.roproxy.com/universes/v1/places/{int(game_id)}/universe')
+        response = requests.get(f'https://apis.roblox.com/universes/v1/places/{int(game_id)}/universe')
 
         if response.status_code == 200:
             data = response.json()
@@ -401,7 +401,7 @@ async def game2places(ctx, game_id1: str):
                 place_names1 = []
 
                 for universe_id in [universe_ids]:
-                    game_response = requests.get(f'https://develop.roproxy.com/v1/universes/{universe_id}/places?isUniverseCreation=false&limit=100&sortOrder=Asc')
+                    game_response = requests.get(f'https://develop.roblox.com/v1/universes/{universe_id}/places?isUniverseCreation=false&limit=100&sortOrder=Asc')
 
                     if game_response.status_code == 200:
                         game_data = game_response.json()
@@ -629,7 +629,7 @@ async def uploader(ctx, item_id1: str):
         else:
             item_id = item_id1
 
-        url = "https://assetdelivery.roproxy.com/v1/asset/"
+        url = "https://assetdelivery.roblox.com/v1/asset/"
         params = {
             "id": item_id,
             "version": "0"
@@ -643,16 +643,16 @@ async def uploader(ctx, item_id1: str):
 
             if match:
                 asset_id = match.group(1)
-                details_url = f"https://economy.roproxy.com/v2/assets/{str(asset_id)}/details"
+                details_url = f"https://economy.roblox.com/v2/assets/{str(asset_id)}/details"
                 details_response = requests.get(details_url)
                 details_data = details_response.json()
                 creatorname = details_data.get("Creator", {}).get("Name")
                 creatorid = details_data.get("Creator", {}).get("Id")
                 em = discord.Embed(title=f"Asset Uploader Found!")
                 em.add_field(name=f"Item Id: {item_id}", value=f"https://www.roblox.com/catalog/{item_id}/Redblue", inline=False)
-                player_url = f"https://users.roproxy.com/v1/users/{str(creatorid)}"
+                player_url = f"https://users.roblox.com/v1/users/{str(creatorid)}"
                 player_response = requests.get(player_url)
-                thumbnail_url = f"https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds={str(creatorid)}&size=352x352&format=Png&isCircular=false"
+                thumbnail_url = f"https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds={str(creatorid)}&size=352x352&format=Png&isCircular=false"
                 thumbnail_response = requests.get(thumbnail_url)
                 em.add_field(name=f"Creator ID: {creatorid}", value=f"https://www.roblox.com/users/{str(creatorid)}/profile", inline=False)
                 em.timestamp = datetime.datetime.utcnow()
@@ -704,3 +704,4 @@ async def on_message(message):
     except Exception as e:
         print(e)
 bot.run(config["token"])
+
