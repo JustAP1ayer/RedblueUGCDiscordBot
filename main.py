@@ -187,7 +187,7 @@ async def info(ctx, *, item_id1: str):
             await ctx.send("Please add an item link or item ID", allowed_mentions=discord.AllowedMentions(everyone=False,roles=False,users=False))
     except Exception as e:
         print(e)
-        await ctx.send("Error occurred or invalid item ID. Use ':3info ID' to get item details.", allowed_mentions=discord.AllowedMentions(everyone=False,roles=False,users=False))
+        await ctx.send("Error occurred or invalid item ID. ", allowed_mentions=discord.AllowedMentions(everyone=False,roles=False,users=False))
 @bot.command()
 @commands.cooldown(1, 14, commands.BucketType.user)
 async def stock(ctx, *, item_id1: str):
@@ -231,7 +231,7 @@ async def stock(ctx, *, item_id1: str):
             await ctx.send("Please add an item link or item ID", allowed_mentions=discord.AllowedMentions(everyone=False,roles=False,users=False))
     except Exception as e:
         print(e)
-        await ctx.send("Error occurred or invalid item ID. Use ':3stock ID' to get item details.", allowed_mentions=discord.AllowedMentions(everyone=False,roles=False,users=False))
+        await ctx.send("Error occurred or invalid item ID.", allowed_mentions=discord.AllowedMentions(everyone=False,roles=False,users=False))
 
 
 @stock.error
@@ -476,7 +476,7 @@ async def waifu_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         em = discord.Embed(title=f"Slow down! (u weird asf tho)", description=f"Try again in {error.retry_after:.2f}s.", color=15548997)
         em.timestamp = datetime.datetime.utcnow()
-        em.set_footer(text='redblue is disgusted, :3redblue better',icon_url="https://i.imgur.com/hWCLhIZ.png")
+        em.set_footer(text='redblue is disgusted, redblue better',icon_url="https://i.imgur.com/hWCLhIZ.png")
         await ctx.send(embed=em)
 @bot.command()
 @commands.cooldown(1, 18, commands.BucketType.user)
@@ -517,7 +517,7 @@ async def neko_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         em = discord.Embed(title=f"Slow down! (u weird asf tho)", description=f"Try again in {error.retry_after:.2f}s.", color=15548997)
         em.timestamp = datetime.datetime.utcnow()
-        em.set_footer(text='redblue is disgusted, :3redblue better',icon_url="https://i.imgur.com/hWCLhIZ.png")
+        em.set_footer(text='redblue is disgusted, redblue better',icon_url="https://i.imgur.com/hWCLhIZ.png")
         await ctx.send(embed=em)
 @bot.command()
 @commands.cooldown(1, 14, commands.BucketType.user)
