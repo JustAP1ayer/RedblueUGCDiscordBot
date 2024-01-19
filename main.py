@@ -123,7 +123,7 @@ async def info(ctx, *, item_id1: str):
                     if remaining_data and remaining_data.get("lowestResalePrice") and remaining_data.get("lowestResalePrice") != 0:
                         lowest_resale = remaining_data.get("lowestResalePrice", 0)
 
-                thumbnail_url = f"https://thumbnails.roproxy.com/v1/assets?assetIds={item_id}&returnPolicy=PlaceHolder&size=150x150&format=Png"
+                thumbnail_url = f"https://thumbnails.roblox.com/v1/assets?assetIds={item_id}&returnPolicy=PlaceHolder&size=150x150&format=Png"
                 thumbnail_response = requests.get(thumbnail_url)
 
                 if thumbnail_response.status_code == 200:
